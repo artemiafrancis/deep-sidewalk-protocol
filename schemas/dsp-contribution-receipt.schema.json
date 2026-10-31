@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://osp.network/schemas/osp-contribution-receipt.schema.json",
-  "title": "OSP-Contribution Receipt",
+  "$id": "https://lead-project.xyz/schemas/dsp-contribution-receipt.schema.json",
+  "title": "DSP-Contribution Receipt",
   "description": "Proof of safe contribution by a Physical AI unit operating in public or shared spaces.",
   "type": "object",
   "additionalProperties": false,
@@ -21,18 +21,18 @@
   "properties": {
     "schemaVersion": {
       "type": "string",
-      "pattern": "^osp-receipt@\\d+\\.\\d+$"
+      "pattern": "^dsp-receipt@\\d+\\.\\d+$"
     },
     "receiptId": {
       "type": "string"
     },
     "robotDid": {
       "type": "string",
-      "pattern": "^did:osp:robot:[A-Za-z0-9\\-_.]+$"
+      "pattern": "^did:dsp:robot:[A-Za-z0-9\\-_.]+$"
     },
     "agentDid": {
       "type": "string",
-      "pattern": "^did:osp:agent:[A-Za-z0-9\\-_.]+$"
+      "pattern": "^did:dsp:agent:[A-Za-z0-9\\-_.]+$"
     },
     "passportId": {
       "type": "string"
@@ -241,61 +241,3 @@
       "properties": {
         "dataHash": {
           "type": "string"
-        },
-        "collectionMethod": {
-          "type": "string"
-        },
-        "evidenceReferences": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "proof": {
-      "$ref": "#/definitions/proof"
-    },
-    "metadata": {
-      "type": "object",
-      "additionalProperties": true
-    }
-  },
-  "definitions": {
-    "proof": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "type",
-        "created",
-        "verificationMethod",
-        "proofPurpose",
-        "proofValue"
-      ],
-      "properties": {
-        "type": {
-          "type": "string",
-          "enum": [
-            "Ed25519Signature2020",
-            "RsaSignature2018",
-            "EcdsaSecp256k1Signature2019",
-            "DataIntegrityProof"
-          ]
-        },
-        "created": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "verificationMethod": {
-          "type": "string"
-        },
-        "proofPurpose": {
-          "type": "string"
-        },
-        "proofValue": {
-          "type": "string"
-        }
-      }
-    }
-  }
-}
