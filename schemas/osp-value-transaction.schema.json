@@ -1,0 +1,343 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://osp.network/schemas/osp-value-transaction.schema.json",
+  "title": "OSP-Value Transaction",
+  "description": "Transaction record for value exchange, split execution, DeEP Wallet payment boundary, and Social Return execution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "txId",
+    "timestamp",
+    "type",
+    "parties",
+    "amount",
+    "paymentBoundary",
+    "splitExecution",
+    "reference",
+    "proof"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^osp-value-tx@\\d+\\.\\d+$"
+    },
+    "txId": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DATA_PURCHASE",
+        "REWARD_PAYOUT",
+        "FEE",
+        "REFUND",
+        "SOCIAL_RETURN",
+        "SERVICE_PAYMENT",
+        "TREASURY_TRANSFER"
+      ]
+    },
+    "parties": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "payerDid",
+        "receiverDid",
+        "networkDid"
+      ],
+      "properties": {
+        "payerDid": {
+          "type": "string",
+          "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+        },
+        "receiverDid": {
+          "type": "string",
+          "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+        },
+        "buyerDid": {
+          "type": "string",
+          "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+        },
+        "sellerDid": {
+          "type": "string",
+          "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+        },
+        "networkDid": {
+          "type": "string",
+          "pattern": "^did:osp:network:[A-Za-z0-9\\-_.]+$"
+        },
+        "intermediaryDid": {
+          "type": "string",
+          "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+        }
+      }
+    },
+    "amount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "grossMinorUnits",
+        "currencyCode",
+        "settlementNetwork"
+      ],
+      "properties": {
+        "grossMinorUnits": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Gross amount in minor units."
+        },
+        "currencyCode": {
+          "type": "string",
+          "pattern": "^[A-Z0-9]{3,10}",
+          "description": "Fiat currency code or token symbol, e.g. JPY, USD, USDC."
+        },
+        "settlementNetwork": {
+          "type": "string",
+          "description": "Settlement network, e.g. offchain, stripe, polygon, ethereum, solana."
+        },
+        "exchangeRateToBase": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "paymentBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paymentTarget",
+        "deepWalletDid",
+        "paymentSafetyGateRequired",
+        "socialReturnSafetyGateRequired"
+      ],
+      "properties": {
+        "paymentTarget": {
+          "type": "string",
+          "enum": [
+            "DEEP_WALLET",
+            "DEEP_PAYMENT_MODULE"
+          ],
+          "description": "External company or MAP service should pay into a DeEP Wallet or DeEP-controlled payment module, not directly to a Social Return fund."
+        },
+        "deepWalletDid": {
+          "type": "string",
+          "pattern": "^did:osp:wallet:[A-Za-z0-9\\-_.]+$"
+        },
+        "paymentSafetyGateRequired": {
+          "type": "boolean",
+          "description": "Whether the external payment into DeEP Wallet must pass through Payment Safety Gate."
+        },
+        "socialReturnSafetyGateRequired": {
+          "type": "boolean",
+          "description": "Whether Social Return execution from DeEP Wallet must pass through Social Return Safety Gate."
+        },
+        "nonCompensationNotice": {
+          "type": "string",
+          "description": "Optional notice clarifying that external payer is not automatically liable for DeEP-side overdistribution after correct payment."
+        }
+      }
+    },
+    "splitExecution": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "recipientDid",
+          "amountMinorUnits",
+          "currencyCode",
+          "rate"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "sellerReward",
+              "networkFee",
+              "certifierFee",
+              "insurancePool",
+              "municipalityShare",
+              "socialReturn",
+              "treasuryReserve",
+              "other"
+            ]
+          },
+          "recipientDid": {
+            "type": "string",
+            "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+          },
+          "amountMinorUnits": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "currencyCode": {
+            "type": "string",
+            "pattern": "^[A-Z0-9]{3,10}$"
+          },
+          "rate": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "ruleId": {
+            "type": "string"
+          },
+          "module": {
+            "type": "string",
+            "description": "Module name, e.g. DogPension_v1, SocialReturn_v1."
+          },
+          "safetyGateRequired": {
+            "type": "boolean"
+          },
+          "safetyGateDecisionId": {
+            "type": "string"
+          },
+          "onChainTxId": {
+            "type": "string"
+          },
+          "executionStatus": {
+            "type": "string",
+            "enum": [
+              "PENDING",
+              "COMPLETED",
+              "FAILED",
+              "BLOCKED",
+              "DELAYED",
+              "NEEDS_HUMAN_APPROVAL"
+            ]
+          }
+        }
+      }
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "patchIds",
+        "receiptId",
+        "passportId"
+      ],
+      "properties": {
+        "patchIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "primaryPatchId": {
+          "type": "string"
+        },
+        "receiptId": {
+          "type": "string"
+        },
+        "passportId": {
+          "type": "string"
+        },
+        "relatedTxIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "safetyGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "paymentSafetyGateDecisionId": {
+          "type": "string"
+        },
+        "socialReturnSafetyGateDecisionId": {
+          "type": "string"
+        },
+        "treasuryReserveChecked": {
+          "type": "boolean"
+        },
+        "minimumTreasuryReserveMinorUnits": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "auditTrailId": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "canonicalPayloadHash": {
+          "type": "string"
+        },
+        "originEndpoint": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "proof": {
+      "$ref": "#/definitions/proof"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "definitions": {
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "created",
+        "verificationMethod",
+        "proofPurpose",
+        "proofValue"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Ed25519Signature2020",
+            "RsaSignature2018",
+            "EcdsaSecp256k1Signature2019",
+            "DataIntegrityProof"
+          ]
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "verificationMethod": {
+          "type": "string"
+        },
+        "proofPurpose": {
+          "type": "string"
+        },
+        "proofValue": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
