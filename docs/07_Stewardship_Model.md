@@ -1,4 +1,4 @@
-# OSP Stewardship Model (v0.1)
+# DSP Stewardship Model (v0.1)
 
 Public Governance, Human-in-the-Loop Oversight, and Commons Administration.
 
@@ -7,7 +7,7 @@ Official Portal: https://www.lead-project.xyz/
 ---
 
 ## 1. Governance Principles
-Open Sidewalk Protocol (OSP) operates as an open-source, public-commons infrastructure rather than a rent-extracting corporate intermediary[cite: 3]. 
+DeEP Sidewalk Protocol (DSP) operates as an open-source, public-commons infrastructure rather than a rent-extracting corporate intermediary[cite: 3]. 
 
 To maintain alignment between physical AI operations and human communities, the protocol enforces three non-negotiable governance principles[cite: 3]:
 1. Public Benefit Invariance: The baseline social return allocation (e.g., funding biological care / guide dog support) cannot be dismantled, redirected, or diluted by algorithmic optimization[cite: 3].
@@ -45,4 +45,4 @@ While autonomous AI agents manage difficulty patches, session routing, and micro
 ---
 
 ## 4. Institutional Sunset Provision
-OSP stewardship is designed with an explicit exit condition: as municipal road authorities and international standards bodies (ISO/IEEE) formalize native coexistence and social return mechanisms, steward governance authority progressively decentralizes into public civil infrastructure[cite: 3].
+DSP stewardship is designed with an explicit exit condition: as municipal road authorities and international standards bodies (ISO/IEEE) formalize native coexistence and social return mechanisms, steward governance authority progressively decentralizes into public civil infrastructure[cite: 3].
