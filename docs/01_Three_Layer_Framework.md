@@ -1,4 +1,4 @@
-# OSP Three-Layer Framework (v4.1)
+# DSP Three-Layer Framework (v4.1)
 
 Safe Coexistence, Transparent Contribution, and Automated Social Return for Physical AI.
 
@@ -7,14 +7,14 @@ Official Portal: https://www.lead-project.xyz/
 ---
 
 ## 1. Background and Structural Shift
-Previous robotic paradigms prioritized closed, single-vendor deployment, leading to fragmented sidewalk access, regulatory bottlenecks, and societal friction. The Open Sidewalk Protocol (OSP) replaces monolithic systems with an open-source, modular portal infrastructure.
+Previous robotic paradigms prioritized closed, single-vendor deployment, leading to fragmented sidewalk access, regulatory bottlenecks, and societal friction. The DeEP Sidewalk Protocol (DSP) replaces monolithic systems with an open-source, modular portal infrastructure.
 
-By decoupling operational standards from specific hardware manufacturers, OSP establishes an interoperable foundation accessible to all physical AI units, autonomous delivery systems, and assistive robotics operating in shared human spaces.
+By decoupling operational standards from specific hardware manufacturers, DSP establishes an interoperable foundation accessible to all physical AI units, autonomous delivery systems, and assistive robotics operating in shared human spaces.
 
 ---
 
 ## 2. The Three-Layer Architecture
-OSP operates through three distinct layers, balancing regulatory clarity, economic viability, and durable societal alignment:
+DSP operates through three distinct layers, balancing regulatory clarity, economic viability, and durable societal alignment:
 
 1. Public Commons Layer (Interface & Safety)
    - Standardized navigation passport and identification
