@@ -32,10 +32,10 @@ The protocol architecture is anchored by four primary data schemas supporting ma
 
 | Schema File | Name & Purpose |
 | :--- | :--- |
-| [`osp-passport-credential.schema.json`](schemas/osp-passport-credential.schema.json) | **OSP-Passport Credential**: W3C VC-based passport defining clearance phases, operator liability, insurance binding, and active care slots. |
-| [`osp-difficulty-patch.schema.json`](schemas/osp-difficulty-patch.schema.json) | **OSP-Difficulty Patch**: Privacy-preserving, non-personal traversal friction and biological coexistence stress mapped to spatial indexing grids (e.g., H3). |
-| [`osp-contribution-receipt.schema.json`](schemas/osp-contribution-receipt.schema.json) | **OSP-Contribution Receipt**: Cryptographic proof of safe transit, adherence to pedestrian precedence (Yield Protocol), and difficulty-adjusted utility. |
-| [`osp-value-transaction.schema.json`](schemas/osp-value-transaction.schema.json) | **OSP-Value Transaction**: Settlement ledger enforcing automated allocation splits and programmatic routing to public welfare (e.g., Dog Pension). |
+| [`DSP-passport-credential.schema.json`](schemas/DSP-passport-credential.schema.json) | **DSP-Passport Credential**: W3C VC-based passport defining clearance phases, operator liability, insurance binding, and active care slots. |
+| [`DSP-difficulty-patch.schema.json`](schemas/DSP-difficulty-patch.schema.json) | **DSP-Difficulty Patch**: Privacy-preserving, non-personal traversal friction and biological coexistence stress mapped to spatial indexing grids (e.g., H3). |
+| [`DSP-contribution-receipt.schema.json`](schemas/DSP-contribution-receipt.schema.json) | **DSP-Contribution Receipt**: Cryptographic proof of safe transit, adherence to pedestrian precedence (Yield Protocol), and difficulty-adjusted utility. |
+| [`DSP-value-transaction.schema.json`](schemas/DSP-value-transaction.schema.json) | **DSP-Value Transaction**: Settlement ledger enforcing automated allocation splits and programmatic routing to public welfare (e.g., Dog Pension). |
 
 ---
 
