@@ -3,8 +3,10 @@
 **Public-Space Physical AI Alignment, Verifiable Telemetry, and Social Return Infrastructure.**
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Specifications](https://img.shields.io/badge/Specs-v0.2_Draft-orange.svg)](docs/)
-[![Schemas](https://img.shields.io/badge/JSON_Schema-Draft--07-green.svg)](schemas/)
+[![Specifications](https://img.shields.io/badge/Specs-v0.2_Draft-orange.svg)](docs)
+[![Schemas](https://img.shields.io/badge/JSON_Schema-Draft--07-green.svg)](schemas)
+
+> **Status**: Draft specification — not an implemented protocol.
 
 ---
 
@@ -14,7 +16,7 @@ The **DeEP Sidewalk Protocol (DSP)**—operating alongside the **Decentralized E
 
 Rather than enforcing closed monopolies or surveillance-heavy tracking, DSP provides a **decentralized electronic vessel** that separates mechanical compliance, spatial friction telemetry, yield auditing, and automated social return.
 
-> **Official Portal & Philosophy**: [https://www.lead-project.xyz/](https://www.lead-project.xyz/)  
+> **Official Portal & Philosophy**: [https://www.lead-project.xyz/](https://www.lead-project.xyz/)
 > *The high-level philosophy and project manifesto are published on the official portal. This repository hosts the technical RFCs, schemas, and implementation drafts.*
 
 ---
@@ -25,6 +27,7 @@ Rather than enforcing closed monopolies or surveillance-heavy tracking, DSP prov
 deep-sidewalk-protocol/
 ├── docs/       # Technical RFCs and operational architecture specifications
 └── schemas/    # Formal JSON Schema definitions (Draft-07)
+```
 
 ## 1. Core Data Schemas (`schemas/`)
 
