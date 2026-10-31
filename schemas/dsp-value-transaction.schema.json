@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://osp.network/schemas/osp-value-transaction.schema.json",
-  "title": "OSP-Value Transaction",
+  "$id": "https://lead-project.xyz/schemas/dsp-value-transaction.schema.json",
+  "title": "DSP-Value Transaction",
   "description": "Transaction record for value exchange, split execution, DeEP Wallet payment boundary, and Social Return execution.",
   "type": "object",
   "additionalProperties": false,
@@ -20,7 +20,7 @@
   "properties": {
     "schemaVersion": {
       "type": "string",
-      "pattern": "^osp-value-tx@\\d+\\.\\d+$"
+      "pattern": "^dsp-value-tx@\\d+\\.\\d+$"
     },
     "txId": {
       "type": "string"
@@ -52,27 +52,27 @@
       "properties": {
         "payerDid": {
           "type": "string",
-          "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+          "pattern": "^did:dsp:[A-Za-z0-9:_\\-.]+$"
         },
         "receiverDid": {
           "type": "string",
-          "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+          "pattern": "^did:dsp:[A-Za-z0-9:_\\-.]+$"
         },
         "buyerDid": {
           "type": "string",
-          "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+          "pattern": "^did:dsp:[A-Za-z0-9:_\\-.]+$"
         },
         "sellerDid": {
           "type": "string",
-          "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+          "pattern": "^did:dsp:[A-Za-z0-9:_\\-.]+$"
         },
         "networkDid": {
           "type": "string",
-          "pattern": "^did:osp:network:[A-Za-z0-9\\-_.]+$"
+          "pattern": "^did:dsp:network:[A-Za-z0-9\\-_.]+$"
         },
         "intermediaryDid": {
           "type": "string",
-          "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+          "pattern": "^did:dsp:[A-Za-z0-9:_\\-.]+$"
         }
       }
     },
@@ -92,7 +92,7 @@
         },
         "currencyCode": {
           "type": "string",
-          "pattern": "^[A-Z0-9]{3,10}",
+          "pattern": "^[A-Z0-9]{3,10}$",
           "description": "Fiat currency code or token symbol, e.g. JPY, USD, USDC."
         },
         "settlementNetwork": {
@@ -125,7 +125,7 @@
         },
         "deepWalletDid": {
           "type": "string",
-          "pattern": "^did:osp:wallet:[A-Za-z0-9\\-_.]+$"
+          "pattern": "^did:dsp:wallet:[A-Za-z0-9\\-_.]+$"
         },
         "paymentSafetyGateRequired": {
           "type": "boolean",
@@ -170,7 +170,7 @@
           },
           "recipientDid": {
             "type": "string",
-            "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$"
+            "pattern": "^did:dsp:[A-Za-z0-9:_\\-.]+$"
           },
           "amountMinorUnits": {
             "type": "integer",
@@ -338,6 +338,3 @@
           "type": "string"
         }
       }
-    }
-  }
-}
