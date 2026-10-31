@@ -1,15 +1,15 @@
-# OSP Certification Criteria and Adversarial Defense (v0.1)
+# DSP Certification Criteria and Adversarial Defense (v0.1)
 
-Decentralized Electronic Passport / Open Sidewalk Protocol (OSP)
+Decentralized Electronic Passport / DeEP Sidewalk Protocol (DSP)
 
 Official Portal: https://www.lead-project.xyz/
 
 ---
 
 ## 1. Safety Standard Integration (Layer 0)
-OSP does not replace established mechanical safety regulations. Instead, it positions them as **Layer 0: Existing Safety Compliance** (e.g., ISO 3691-4, ISO 13482, local road traffic laws). 
+DSP does not replace established mechanical safety regulations. Instead, it positions them as **Layer 0: Existing Safety Compliance** (e.g., ISO 3691-4, ISO 13482, local road traffic laws). 
 
-Building upon Layer 0, OSP introduces **Public Coexistence Certification** (Layers 1 and 2), evaluating how autonomous units dynamically interact with biological life, share pedestrian spaces, and contribute to public welfare.
+Building upon Layer 0, DSP introduces **Public Coexistence Certification** (Layers 1 and 2), evaluating how autonomous units dynamically interact with biological life, share pedestrian spaces, and contribute to public welfare.
 
 ---
 
@@ -32,7 +32,7 @@ Building upon Layer 0, OSP introduces **Public Coexistence Certification** (Laye
 ---
 
 ## 3. Adversarial Defense & Sybil Resistance
-Public shared spaces invite systemic trolling, telemetry spoofing, and artificial yield farming. OSP enforces defense via economic cost functions rather than subjective policy policing:
+Public shared spaces invite systemic trolling, telemetry spoofing, and artificial yield farming. DSP enforces defense via economic cost functions rather than subjective policy policing:
 
 - **Algorithmic Yield Damping**: Repeated yielding events triggered within identical spatial meshes or between cooperating nodes face diminishing utility returns, neutralizing manufactured contribution receipts.
 - **Dynamic Risk Detours**: Meshes exhibiting abnormal telemetry conflicts or deliberate harassment trigger automatic routing detours, depriving bad actors of physical interaction opportunities.
