@@ -1,0 +1,301 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://osp.network/schemas/osp-contribution-receipt.schema.json",
+  "title": "OSP-Contribution Receipt",
+  "description": "Proof of safe contribution by a Physical AI unit operating in public or shared spaces.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "receiptId",
+    "robotDid",
+    "passportId",
+    "patchIds",
+    "timestamp",
+    "session",
+    "performance",
+    "contribution",
+    "evaluation",
+    "proof"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^osp-receipt@\\d+\\.\\d+$"
+    },
+    "receiptId": {
+      "type": "string"
+    },
+    "robotDid": {
+      "type": "string",
+      "pattern": "^did:osp:robot:[A-Za-z0-9\\-_.]+$"
+    },
+    "agentDid": {
+      "type": "string",
+      "pattern": "^did:osp:agent:[A-Za-z0-9\\-_.]+$"
+    },
+    "passportId": {
+      "type": "string"
+    },
+    "patchIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "description": "Associated Difficulty Patch identifiers."
+    },
+    "primaryPatchId": {
+      "type": "string",
+      "description": "Optional primary Difficulty Patch identifier when multiple patchIds are referenced."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessionId",
+        "startTime",
+        "endTime",
+        "durationSeconds",
+        "distanceMeters",
+        "avgSpeedMps"
+      ],
+      "properties": {
+        "sessionId": {
+          "type": "string"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "durationSeconds": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "distanceMeters": {
+          "type": "number",
+          "minimum": 0
+        },
+        "avgSpeedMps": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "performance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "safetyScore",
+        "accidentAvoidanceCount",
+        "humanInterventionCount",
+        "emergencyStopCount",
+        "complianceRate"
+      ],
+      "properties": {
+        "safetyScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "accidentAvoidanceCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "humanInterventionCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "emergencyStopCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "complianceRate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "yieldEvents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "nearMissEvents": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "contribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "difficultyAdjustedValue",
+        "publicBenefitScore",
+        "mapPatchesSubmitted",
+        "acceptedPatchCount",
+        "socialReturnParticipation",
+        "carePriorityRespected"
+      ],
+      "properties": {
+        "difficultyAdjustedValue": {
+          "type": "number",
+          "minimum": 0
+        },
+        "publicBenefitScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "mapPatchesSubmitted": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "acceptedPatchCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "socialReturnParticipation": {
+          "type": "boolean"
+        },
+        "carePriorityRespected": {
+          "type": "boolean"
+        }
+      }
+    },
+    "evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "safetyWeight",
+        "difficultyWeight",
+        "publicBenefitWeight",
+        "coexistenceWeight",
+        "finalContributionScore"
+      ],
+      "properties": {
+        "safetyWeight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "difficultyWeight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "publicBenefitWeight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "coexistenceWeight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "finalContributionScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "calculationMethod": {
+          "type": "string"
+        }
+      }
+    },
+    "incidentReportId": {
+      "type": "string"
+    },
+    "auditTrailId": {
+      "type": "string"
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "containsPersonalData": {
+          "type": "boolean"
+        },
+        "rawSensorDataStored": {
+          "type": "boolean"
+        },
+        "aggregationLevel": {
+          "type": "string"
+        },
+        "onDeviceProcessing": {
+          "type": "boolean"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dataHash": {
+          "type": "string"
+        },
+        "collectionMethod": {
+          "type": "string"
+        },
+        "evidenceReferences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "proof": {
+      "$ref": "#/definitions/proof"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "definitions": {
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "created",
+        "verificationMethod",
+        "proofPurpose",
+        "proofValue"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Ed25519Signature2020",
+            "RsaSignature2018",
+            "EcdsaSecp256k1Signature2019",
+            "DataIntegrityProof"
+          ]
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "verificationMethod": {
+          "type": "string"
+        },
+        "proofPurpose": {
+          "type": "string"
+        },
+        "proofValue": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
