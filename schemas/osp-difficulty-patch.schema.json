@@ -1,0 +1,289 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://osp.network/schemas/osp-difficulty-patch.schema.json",
+  "title": "OSP-Difficulty Patch",
+  "description": "Non-personal environmental difficulty update for Physical AI public-space operation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "patchId",
+    "providerDid",
+    "location",
+    "timestamp",
+    "data",
+    "difficulty",
+    "privacy",
+    "proof"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^osp-diff@\\d+\\.\\d+$"
+    },
+    "patchId": {
+      "type": "string",
+      "description": "Unique identifier for this Difficulty Patch."
+    },
+    "providerDid": {
+      "type": "string",
+      "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$",
+      "description": "DID of the reporting Physical AI unit, provider, or infrastructure node."
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "indexType",
+        "indexValue",
+        "resolution"
+      ],
+      "properties": {
+        "indexType": {
+          "type": "string",
+          "enum": [
+            "H3",
+            "S2",
+            "quadkey",
+            "mesh",
+            "indoor_map",
+            "facility_zone",
+            "custom"
+          ]
+        },
+        "indexValue": {
+          "type": "string",
+          "description": "Spatial index value. This field replaces index-specific names such as h3Index."
+        },
+        "resolution": {
+          "type": "string",
+          "description": "Human-readable resolution or level, e.g. 10m, mesh_50m, floor_zone."
+        },
+        "regionHint": {
+          "type": "string",
+          "description": "Optional coarse region hint, e.g. tokyo_shibuya."
+        },
+        "floorId": {
+          "type": "string",
+          "description": "Optional floor identifier for indoor environments."
+        }
+      }
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surface",
+        "surfaceConfidence",
+        "obstacleDensity"
+      ],
+      "properties": {
+        "surface": {
+          "type": "string",
+          "enum": [
+            "paved_even",
+            "paved_uneven",
+            "gravel",
+            "dirt",
+            "grass",
+            "wet",
+            "icy",
+            "mixed",
+            "unknown"
+          ]
+        },
+        "surfaceConfidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "obstacleDensity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "slopeIndex": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "curbRisk": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "crowdDensityLevel": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "weatherImpact": {
+          "type": "string",
+          "enum": [
+            "none",
+            "light",
+            "moderate",
+            "severe",
+            "unknown"
+          ]
+        },
+        "carePriorityScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Degree of additional care required in the environment. Not a personal attribute."
+        },
+        "coexistenceStressIndex": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Environmental stress for shared use."
+        },
+        "sensorSummaryHash": {
+          "type": "string",
+          "description": "Hash of aggregated sensor summary. Raw sensor data should not be stored by default."
+        }
+      }
+    },
+    "difficulty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "navigationLoad",
+        "coexistenceScore",
+        "requiresHumanIntervention",
+        "yieldPriority"
+      ],
+      "properties": {
+        "navigationLoad": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "coexistenceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "requiresHumanIntervention": {
+          "type": "boolean"
+        },
+        "yieldPriority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "containsPersonalData",
+        "rawSensorDataStored",
+        "aggregationLevel",
+        "onDeviceProcessing"
+      ],
+      "properties": {
+        "containsPersonalData": {
+          "type": "boolean"
+        },
+        "rawSensorDataStored": {
+          "type": "boolean"
+        },
+        "aggregationLevel": {
+          "type": "string"
+        },
+        "onDeviceProcessing": {
+          "type": "boolean"
+        },
+        "differentialPrivacy": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "epsilon": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dataHash": {
+          "type": "string"
+        },
+        "collectionMethod": {
+          "type": "string"
+        },
+        "sensorFirmwareVersion": {
+          "type": "string"
+        },
+        "collectionDeviceIdHash": {
+          "type": "string"
+        }
+      }
+    },
+    "proof": {
+      "$ref": "#/definitions/proof"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "definitions": {
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "created",
+        "verificationMethod",
+        "proofPurpose",
+        "proofValue"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Ed25519Signature2020",
+            "RsaSignature2018",
+            "EcdsaSecp256k1Signature2019",
+            "DataIntegrityProof"
+          ]
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "verificationMethod": {
+          "type": "string"
+        },
+        "proofPurpose": {
+          "type": "string"
+        },
+        "proofValue": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
