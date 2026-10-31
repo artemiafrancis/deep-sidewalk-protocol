@@ -1,4 +1,4 @@
-# OSP AI Agent Safety Gateway (v0.1)
+# DSP AI Agent Safety Gateway (v0.1)
 
 Supervised Autonomous Execution and Risk-Mitigated Value Routing.
 
@@ -9,13 +9,13 @@ Official Portal: https://www.lead-project.xyz/
 ## 1. Context and Purpose
 As autonomous AI agents acquire native execution capabilities—deploying code, managing cryptographic wallets, and querying physical spatial APIs—protocols must distinguish between assisted execution and unrestricted autonomy.
 
-The OSP AI Agent Safety Gateway enforces structural boundaries[cite: 5, 10]. It empowers physical AI agents to propose optimizations, compile Difficulty Patches, and route network receipts, while mandating strict cryptographic threshold gates for high-impact decisions[cite: 5].
+The DSP AI Agent Safety Gateway enforces structural boundaries[cite: 5, 10]. It empowers physical AI agents to propose optimizations, compile Difficulty Patches, and route network receipts, while mandating strict cryptographic threshold gates for high-impact decisions[cite: 5].
 
 ---
 
 ## 2. Core Safety Gate Architecture
 
-OSP separates operations into two distinct pipelines governed by programmatic threshold gates:
+DSP separates operations into two distinct pipelines governed by programmatic threshold gates:
 
 1. Autonomous Proposal Pipeline (Agent Execution)
    - Dynamic difficulty patch compilation
