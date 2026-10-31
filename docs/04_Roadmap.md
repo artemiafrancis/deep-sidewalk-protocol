@@ -1,4 +1,4 @@
-# OSP Implementation Roadmap (v0.1)
+# DSP Implementation Roadmap (v0.1)
 
 From Concept Specification to Modular Public-Space AI Alignment.
 
@@ -7,7 +7,7 @@ Official Portal: https://www.lead-project.xyz/
 ---
 
 ## 1. Strategy: The Modular Plug-in Approach
-OSP avoids monolithic full-stack deployment. Rather than building parallel, closed infrastructure, the protocol delivers lightweight, modular integration layers that plug directly into existing robotics operating systems, identity networks, and decentralized physical infrastructure (DePIN).
+DSP avoids monolithic full-stack deployment. Rather than building parallel, closed infrastructure, the protocol delivers lightweight, modular integration layers that plug directly into existing robotics operating systems, identity networks, and decentralized physical infrastructure (DePIN).
 
 ---
 
@@ -25,7 +25,7 @@ OSP avoids monolithic full-stack deployment. Rather than building parallel, clos
 - **Objective**: Establish direct integration points with existing external frameworks.
 - **Focus Areas**:
   - **Identity**: Interoperability with W3C Decentralized Identifiers (DIDs) and Verifiable Credentials (VCs).
-  - **Spatial Data**: Mapping non-personal telemetry to geospatial indexing grids (Uber H3 mesh).
+  - **Spatial Data**: Mapping non-personal telemetry to geDSPatial indexing grids (Uber H3 mesh).
   - **Safety Compliance**: Absorbing ISO 3691-4 (AMR) and ISO 13482 as foundational Layer 0 baselines.
   - **Execution & Settlement**: Automated allocation splitters routed via multi-payment gateways.
 
@@ -46,4 +46,4 @@ OSP avoids monolithic full-stack deployment. Rather than building parallel, clos
 ---
 
 ## 3. Exit Condition & Long-Term Vision
-The ultimate objective of OSP is institutional obsolescence. When municipal regulations, multi-vendor standards, and AI safety baselines natively incorporate safe public yielding and automated commons return, the protocol dissolves seamlessly into standard civic infrastructure.
+The ultimate objective of DSP is institutional obsolescence. When municipal regulations, multi-vendor standards, and AI safety baselines natively incorporate safe public yielding and automated commons return, the protocol dissolves seamlessly into standard civic infrastructure.
