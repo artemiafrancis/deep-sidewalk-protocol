@@ -1,4 +1,4 @@
-# OSP Incident Logging and Audit Trail (v0.1)
+# DSP Incident Logging and Audit Trail (v0.1)
 
 Transparent Safety Diagnostics, Near-Miss Telemetry, and Verifiable Provenance.
 
@@ -9,7 +9,7 @@ Official Portal: https://www.lead-project.xyz/
 ## 1. Safety Transparency Invariant
 Traditional proprietary fleet operations treat operational near-misses, sudden deceleration incidents, and spatial conflicts as internal confidential data. 
 
-Open Sidewalk Protocol (OSP) reverses this paradigm through the Safety Transparency Invariant:
+DeEP Sidewalk Protocol (DSP) reverses this paradigm through the Safety Transparency Invariant:
 - Autonomous navigation trust cannot be earned behind closed doors.
 - Near-miss occurrences, spatial deadlocks, and remote operator overrides must generate verifiable, non-personal public telemetry.
 - Machine accountability requires structural transparency, not corporate assurances.
@@ -18,11 +18,11 @@ Open Sidewalk Protocol (OSP) reverses this paradigm through the Safety Transpare
 
 ## 2. Telemetry and Incident Classification
 
-OSP defines three severity levels for public sidewalk telemetry:
+DSP defines three severity levels for public sidewalk telemetry:
 
 1. Class I: Routine Navigation Telemetry
    - Normal deceleration, routine trajectory deviations, and standard obstacle clearance.
-   - Aggregated directly into discrete H3 grid updates (OSP-Difficulty Patch).
+   - Aggregated directly into discrete H3 grid updates (DSP-Difficulty Patch).
 
 2. Class II: Near-Miss & High-Deceleration Events
    - Sudden braking (>0.3g), proximity buffer intrusions (<0.5m from biological life), or erratic sensor anomalies.
@@ -58,4 +58,4 @@ Incident logs must never become a tool for surveillance:
 ---
 
 ## 4. Summary
-Accountability is not an act of willpower; it is an engineered infrastructure. By formalizing near-miss disclosures and verifiable audit trails, OSP transforms physical errors into shared civic resilience.
+Accountability is not an act of willpower; it is an engineered infrastructure. By formalizing near-miss disclosures and verifiable audit trails, DSP transforms physical errors into shared civic resilience.
