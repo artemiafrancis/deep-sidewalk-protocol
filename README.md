@@ -1,4 +1,4 @@
-# Open Sidewalk Protocol (OSP) / DeEP
+# DeEP Sidewalk Protocol (DSP)
 
 **Public-Space Physical AI Alignment, Verifiable Telemetry, and Social Return Infrastructure.**
 
@@ -10,9 +10,9 @@
 
 ## Overview
 
-The **Open Sidewalk Protocol (OSP)**—operating alongside the **Decentralized Electronic Passport (DeEP)** framework—defines an open, modular standard for Physical AI and autonomous mobility units (e.g., guide robots, delivery AMRs, assistive micro-mobility) operating within shared pedestrian spaces.
+The **DeEP Sidewalk Protocol (DSP)**—operating alongside the **Decentralized Electronic Passport (DeEP)** framework—defines an open, modular standard for Physical AI and autonomous mobility units (e.g., guide robots, delivery AMRs, assistive micro-mobility) operating within shared pedestrian spaces.
 
-Rather than enforcing closed monopolies or surveillance-heavy tracking, OSP provides a **decentralized electronic vessel** that separates mechanical compliance, spatial friction telemetry, yield auditing, and automated social return.
+Rather than enforcing closed monopolies or surveillance-heavy tracking, DSP provides a **decentralized electronic vessel** that separates mechanical compliance, spatial friction telemetry, yield auditing, and automated social return.
 
 > **Official Portal & Philosophy**: [https://www.lead-project.xyz/](https://www.lead-project.xyz/)  
 > *The high-level philosophy and project manifesto are published on the official portal. This repository hosts the technical RFCs, schemas, and implementation drafts.*
@@ -22,9 +22,10 @@ Rather than enforcing closed monopolies or surveillance-heavy tracking, OSP prov
 ## Repository Structure
 
 ```text
-open-sidewalk-protocol/
+deep-sidewalk-protocol/
 ├── docs/       # Technical RFCs and operational architecture specifications
 └── schemas/    # Formal JSON Schema definitions (Draft-07)
+
 ## 1. Core Data Schemas (`schemas/`)
 
 The protocol architecture is anchored by four primary data schemas supporting machine identity, environmental difficulty reporting, safe contribution proofs, and value settlement:
