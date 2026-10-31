@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://osp.network/schemas/osp-difficulty-patch.schema.json",
-  "title": "OSP-Difficulty Patch",
-  "description": "Non-personal environmental difficulty update for Physical AI public-space operation.",
+  "$id": "https://lead-project.xyz/schemas/dsp-difficulty-patch.schema.json",
+  "title": "DSP-Difficulty Patch",
+  "description": "Non-personal traversal difficulty and coexistence stress patch for Physical AI navigation. Uses spatial indexing (e.g., H3) and aggregated metrics.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -11,24 +11,31 @@
     "providerDid",
     "location",
     "timestamp",
-    "data",
     "difficulty",
+    "coexistence",
     "privacy",
+    "provenance",
     "proof"
   ],
   "properties": {
     "schemaVersion": {
       "type": "string",
-      "pattern": "^osp-diff@\\d+\\.\\d+$"
+      "pattern": "^dsp-diff@\\d+\\.\\d+$",
+      "description": "Schema version identifier, e.g. dsp-diff@1.0"
     },
     "patchId": {
       "type": "string",
-      "description": "Unique identifier for this Difficulty Patch."
+      "description": "Unique identifier for this difficulty patch."
     },
     "providerDid": {
       "type": "string",
-      "pattern": "^did:osp:[A-Za-z0-9:_\\-.]+$",
-      "description": "DID of the reporting Physical AI unit, provider, or infrastructure node."
+      "pattern": "^did:dsp:robot:[A-Za-z0-9\\-_.]+$",
+      "description": "DID of the reporting Physical AI unit."
+    },
+    "agentDid": {
+      "type": "string",
+      "pattern": "^did:dsp:agent:[A-Za-z0-9\\-_.]+$",
+      "description": "Optional DID of the AI Agent coordinating the reporting unit."
     },
     "location": {
       "type": "object",
@@ -45,44 +52,43 @@
             "H3",
             "S2",
             "quadkey",
-            "mesh",
-            "indoor_map",
-            "facility_zone",
-            "custom"
-          ]
+            "geohash",
+            "mesh"
+          ],
+          "description": "Spatial indexing scheme used."
         },
         "indexValue": {
           "type": "string",
-          "description": "Spatial index value. This field replaces index-specific names such as h3Index."
+          "description": "Spatial index string, e.g. H3 index."
         },
         "resolution": {
           "type": "string",
-          "description": "Human-readable resolution or level, e.g. 10m, mesh_50m, floor_zone."
+          "description": "Resolution descriptor, e.g. H3 level 10 or 10m."
         },
         "regionHint": {
           "type": "string",
-          "description": "Optional coarse region hint, e.g. tokyo_shibuya."
-        },
-        "floorId": {
-          "type": "string",
-          "description": "Optional floor identifier for indoor environments."
+          "description": "Optional coarse region descriptor, e.g. tokyo_shibuya."
         }
       }
     },
     "timestamp": {
       "type": "string",
-      "format": "date-time"
+      "format": "date-time",
+      "description": "UTC timestamp when the patch was captured or aggregated."
     },
-    "data": {
+    "difficulty": {
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "surface",
+        "surfaceType",
         "surfaceConfidence",
-        "obstacleDensity"
+        "obstacleDensity",
+        "slopeIndex",
+        "curbRisk",
+        "traversalDifficultyScore"
       ],
       "properties": {
-        "surface": {
+        "surfaceType": {
           "type": "string",
           "enum": [
             "paved_even",
@@ -122,7 +128,7 @@
             "low",
             "medium",
             "high",
-            "unknown"
+            "severe"
           ]
         },
         "weatherImpact": {
@@ -131,58 +137,52 @@
             "none",
             "light",
             "moderate",
-            "severe",
-            "unknown"
+            "severe"
           ]
         },
+        "traversalDifficultyScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "coexistence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "carePriorityScore",
+        "coexistenceScore",
+        "serviceAnimalEncounter",
+        "yieldFrequency"
+      ],
+      "properties": {
         "carePriorityScore": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "Degree of additional care required in the environment. Not a personal attribute."
+          "description": "Degree of consideration required for vulnerable pedestrians or service animals."
+        },
+        "coexistenceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Ease of harmonious coexistence in this spatial segment."
         },
         "coexistenceStressIndex": {
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "Environmental stress for shared use."
+          "description": "Environmental/biological tension or friction experienced."
         },
-        "sensorSummaryHash": {
-          "type": "string",
-          "description": "Hash of aggregated sensor summary. Raw sensor data should not be stored by default."
-        }
-      }
-    },
-    "difficulty": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "navigationLoad",
-        "coexistenceScore",
-        "requiresHumanIntervention",
-        "yieldPriority"
-      ],
-      "properties": {
-        "navigationLoad": {
+        "serviceAnimalEncounter": {
+          "type": "boolean",
+          "description": "Whether guide dogs, service dogs, or companion animals were encountered."
+        },
+        "yieldFrequency": {
           "type": "number",
           "minimum": 0,
-          "maximum": 1
-        },
-        "coexistenceScore": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1
-        },
-        "requiresHumanIntervention": {
-          "type": "boolean"
-        },
-        "yieldPriority": {
-          "type": "string",
-          "enum": [
-            "low",
-            "medium",
-            "high"
-          ]
+          "description": "Yield actions executed per 100 meters traversed."
         }
       }
     },
@@ -190,53 +190,43 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "containsPersonalData",
-        "rawSensorDataStored",
-        "aggregationLevel",
-        "onDeviceProcessing"
+        "noBiometricData",
+        "noRawFootage",
+        "quantizedSpatialOnly"
       ],
       "properties": {
-        "containsPersonalData": {
+        "noBiometricData": {
           "type": "boolean"
         },
-        "rawSensorDataStored": {
+        "noRawFootage": {
           "type": "boolean"
         },
-        "aggregationLevel": {
-          "type": "string"
-        },
-        "onDeviceProcessing": {
+        "quantizedSpatialOnly": {
           "type": "boolean"
         },
-        "differentialPrivacy": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "enabled": {
-              "type": "boolean"
-            },
-            "epsilon": {
-              "type": "number",
-              "minimum": 0
-            }
-          }
+        "teeProcessed": {
+          "type": "boolean"
         }
       }
     },
     "provenance": {
       "type": "object",
       "additionalProperties": false,
+      "required": [
+        "sensorSuite",
+        "hardwareIntegrityProof"
+      ],
       "properties": {
-        "dataHash": {
+        "sensorSuite": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hardwareIntegrityProof": {
           "type": "string"
         },
-        "collectionMethod": {
-          "type": "string"
-        },
-        "sensorFirmwareVersion": {
-          "type": "string"
-        },
-        "collectionDeviceIdHash": {
+        "firmwareVersion": {
           "type": "string"
         }
       }
